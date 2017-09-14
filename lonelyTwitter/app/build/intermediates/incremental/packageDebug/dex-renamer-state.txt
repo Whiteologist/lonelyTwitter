@@ -1,0 +1,7 @@
+#Wed Sep 13 19:18:04 MDT 2017
+base.0=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9d1b02429c32eb508c39139e5209d6d78e7c792f
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_8d6266c3697420a872ea36c3de508f2a689fecd6/classes.dex
+base.1=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_8d6266c3697420a872ea36c3de508f2a689fecd6
+file.0=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9d1b02429c32eb508c39139e5209d6d78e7c792f/classes.dex

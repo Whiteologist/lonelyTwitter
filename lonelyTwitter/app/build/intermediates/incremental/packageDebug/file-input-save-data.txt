@@ -1,0 +1,24 @@
+#Internal package file, do not edit.
+#Wed Sep 13 19:18:04 MDT 2017
+2.base=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_
+5.file=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_8d6266c3697420a872ea36c3de508f2a689fecd6/classes.dex
+5.set=DEX
+3.base=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_
+6.file=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_/res/layout/main.xml
+2.set=ANDROID_RESOURCE
+4.base=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_
+count=7
+0.file=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9d1b02429c32eb508c39139e5209d6d78e7c792f/classes.dex
+5.base=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_8d6266c3697420a872ea36c3de508f2a689fecd6
+4.set=ANDROID_RESOURCE
+6.base=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_
+1.file=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_/res/layout/list_item.xml
+1.set=ANDROID_RESOURCE
+2.file=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_/AndroidManifest.xml
+6.set=ANDROID_RESOURCE
+0.base=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9d1b02429c32eb508c39139e5209d6d78e7c792f
+3.file=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_/resources.arsc
+3.set=ANDROID_RESOURCE
+1.base=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_
+4.file=/afs/ualberta.ca/home/h/a/haoming3/lonelyTwitter/app/build/intermediates/res/resources-debug.ap_/res/drawable-hdpi-v4/ic_launcher.png
+0.set=DEX
