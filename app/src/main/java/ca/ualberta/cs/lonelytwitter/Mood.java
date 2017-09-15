@@ -23,8 +23,6 @@ public abstract class Mood  {
     public String getMood(){
         return mood;
     }
-    public Date getDate(){
-        return date;
-    }
+    public Date getDate(){ return date;}
     public abstract Boolean isHappy();
 }

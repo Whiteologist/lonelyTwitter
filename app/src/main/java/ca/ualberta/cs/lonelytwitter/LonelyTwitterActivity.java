@@ -24,7 +24,7 @@ public class LonelyTwitterActivity extends Activity {
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,25 +38,38 @@ public class LonelyTwitterActivity extends Activity {
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				setResult(RESULT_OK);
-				String text = bodyText.getText().toString();
-				saveInFile(text, new Date(System.currentTimeMillis()));
-
 				Tweet tweet = new ImportantTweet("");
-				Tweet tweet1 = new NormalTweet("Hi");
+				NormalTweet tweet1 = new NormalTweet("");
 				try {
 					tweet.setMessage("Hello");
 				} catch (TweetTooLongException e) {
-					// e.printStackTrace();
+					//e.printStackTrace();
+				}
+				ArrayList<Tweet> tweets = new ArrayList<Tweet>();
+				tweets.add(tweet);
+				tweets.add(tweet1);
+				for (Tweet t : tweets){
+					Log.d("Some Tag", "The isImportant method on this object returns " + t.isImportant());
 				}
 
-				Tweetable tweet3 = new ImportantTweet("");
-				ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
-				tweetList.add(tweet);
-				tweetList.add(tweet1);
-//				Log.d("", "The isImportant method on tweet returns " + tweet.isImportant());
-//				Log.d("", "The isImportant method on tweet1 returns " + tweet1.isImportant());
-				// finish();
+				ArrayList<Tweetable> tweetables = new ArrayList<Tweetable>();
+				tweetables.add(tweet);
+				tweetables.add(tweet1);
+
+				Mood mood = new Happy("");
+				Sad mood1 = new Sad("");
+
+				ArrayList<Mood> moods = new ArrayList<Mood>();
+				moods.add(mood);
+				moods.add(mood1);
+				for (Mood m : moods){
+					Log.d("Some Tag", "The isHappy method on this object returns " + m.isHappy());
+				}
+
+				setResult(RESULT_OK);
+				String text = bodyText.getText().toString();
+				saveInFile(text, new Date(System.currentTimeMillis()));
+				//finish();
 
 			}
 		});
@@ -92,7 +105,7 @@ public class LonelyTwitterActivity extends Activity {
 		}
 		return tweets.toArray(new String[tweets.size()]);
 	}
-	
+
 	private void saveInFile(String text, Date date) {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
