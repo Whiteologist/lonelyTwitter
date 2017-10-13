@@ -13,7 +13,11 @@ public class TweetList {
     public TweetList(){};
 
     public void add(Tweet tweet){
-        tweets.add(tweet);
+        if (tweets.contains(tweet)){
+            throw new IllegalArgumentException();
+        } else {
+            tweets.add(tweet);
+        }
     }
 
     public boolean hasTweet(Tweet tweet){
@@ -26,5 +30,13 @@ public class TweetList {
 
     public Tweet getTweet(int index){
         return tweets.get(index);
+    }
+
+    public ArrayList<Tweet> getTweets(){
+        return tweets;
+    }
+
+    public int getCount(){
+        return tweets.size();
     }
 }
