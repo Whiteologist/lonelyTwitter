@@ -9,28 +9,31 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class LonelyTwitterActivity extends Activity {
 
+	private LonelyTwitterActivity activity = this;
+
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
-	private ArrayList<NormalTweet> tweetList = new ArrayList<NormalTweet>();
-	private ArrayAdapter<NormalTweet> adapter;
-
-
+	private ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
+	private ArrayAdapter<Tweet> adapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class LonelyTwitterActivity extends Activity {
 
 		bodyText = (EditText) findViewById(R.id.body);
 		Button saveButton = (Button) findViewById(R.id.save);
-		Button searchButton = (Button) findViewById(R.id.search);
+		Button clearButton = (Button) findViewById(R.id.clear);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
@@ -47,23 +50,30 @@ public class LonelyTwitterActivity extends Activity {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
-				NormalTweet newTweet = new NormalTweet(text);
+				Tweet newTweet = new NormalTweet(text);
 				tweetList.add(newTweet);
 				adapter.notifyDataSetChanged();
-				//saveInFile(); // TODO replace this with elastic search
-				ElasticsearchTweetController.AddTweetsTask addTweetsTask = new ElasticsearchTweetController.AddTweetsTask();
-				addTweetsTask.execute(newTweet);
+				saveInFile();
 			}
 		});
 
-		searchButton.setOnClickListener(new View.OnClickListener() {
+		clearButton.setOnClickListener(new View.OnClickListener(){
 
 			public void onClick(View v) {
 				setResult(RESULT_OK);
-				String text = bodyText.getText().toString();  // TODO deprecate this button
-				String query = "{\n\t\"query\": \"" + text + "\"\n}";
-				ElasticsearchTweetController.GetTweetsTask getTweetsTask = new ElasticsearchTweetController.GetTweetsTask();
-				getTweetsTask.execute(query);
+				tweetList.clear();
+				deleteFile(FILENAME);
+				adapter.notifyDataSetChanged();
+			}
+		});
+
+		oldTweetsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+				Intent intent = new Intent(activity, EditTweetActivity.class);
+				startActivity(intent);
+
 			}
 		});
 	}
@@ -72,19 +82,12 @@ public class LonelyTwitterActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		//loadFromFile(); // TODO replace this with elastic search
-		ElasticsearchTweetController.GetTweetsTask getTweetsTask = new ElasticsearchTweetController.GetTweetsTask();
-		getTweetsTask.execute("");
-
-		try{
-			tweetList = getTweetsTask.get();
-		} catch (Exception e){
-			Log.i("Error", "Failed to get the tweets from the async object");
-		}
-		adapter = new ArrayAdapter<NormalTweet>(this,
+		loadFromFile();
+		adapter = new ArrayAdapter<Tweet>(this,
 				R.layout.list_item, tweetList);
 		oldTweetsList.setAdapter(adapter);
 	}
+
 
 	private void loadFromFile() {
 		try {
@@ -96,7 +99,7 @@ public class LonelyTwitterActivity extends Activity {
 			tweetList = gson.fromJson(in, listType);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			tweetList = new ArrayList<NormalTweet>();
+			tweetList = new ArrayList<Tweet>();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			throw new RuntimeException();
